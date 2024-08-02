@@ -6,7 +6,8 @@ import 'package:flutter/material.dart';
 // ignore: must_be_immutable
 class ShoeTile extends StatelessWidget {
   Shoe shoe;
-  ShoeTile({super.key, required this.shoe});
+  Function()? onPressed;
+  ShoeTile({super.key, required this.shoe, required this.onPressed});
 
   @override
   Widget build(BuildContext context) {
@@ -39,8 +40,11 @@ class ShoeTile extends StatelessWidget {
                           topLeft: Radius.circular(4),
                           bottomRight: Radius.circular(4))),
                   child: IconButton(
-                    icon: Icon(Icons.add),
-                    onPressed: () {},
+                    icon: Icon(
+                      Icons.add,
+                      color: Colors.white,
+                    ),
+                    onPressed: onPressed,
                   ),
                 ),
               ],

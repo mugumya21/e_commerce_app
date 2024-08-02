@@ -1,7 +1,7 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:e_commerce_app/components/shoe_tile.dart';
-import 'package:e_commerce_app/models/Cart.dart';
+import 'package:e_commerce_app/models/cart.dart';
 import 'package:e_commerce_app/models/shoe.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -14,6 +14,19 @@ class ShopPage extends StatefulWidget {
 }
 
 class _ShopPageState extends State<ShopPage> {
+  void addshoetocart(Shoe shoe) {
+    Provider.of<Cart>(context, listen: false).addshoetocart(shoe);
+
+    showDialog(
+        context: context,
+        builder: (context) {
+          return AlertDialog(
+            title: Text('Success'),
+            content: Text('Successfly added the Shoe to Cart'),
+          );
+        });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Consumer<Cart>(builder: (context, value, child) {
@@ -82,7 +95,10 @@ class _ShopPageState extends State<ShopPage> {
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (context, index) {
                         Shoe shoe = value.getShoeShop()[index];
-                        return ShoeTile(shoe: shoe);
+                        return ShoeTile(
+                          shoe: shoe,
+                          onPressed: () => addshoetocart(shoe),
+                        );
                       }))
             ],
           ),
