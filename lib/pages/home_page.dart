@@ -1,9 +1,13 @@
 // ignore_for_file: prefer_const_constructors, prefer_const_literals_to_create_immutables
 
 import 'package:e_commerce_app/components/my_bottom_navbar.dart';
+import 'package:e_commerce_app/components/my_box.dart';
+import 'package:e_commerce_app/components/my_button.dart';
 import 'package:e_commerce_app/pages/cart_page.dart';
 import 'package:e_commerce_app/pages/shop_page.dart';
+import 'package:e_commerce_app/theme/theme_provider.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
   HomePage({super.key});
@@ -30,6 +34,17 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        actions: [
+          // MyBox(
+          //     color: Colors.black,
+          //     child: MyButton(
+          //       color: Colors.yellow,
+          //       onTap: () {
+          //         Provider.of<ThemeProvider>(context, listen: false)
+          //             .toggletheme();
+          //       },
+          //     ))
+        ],
         backgroundColor: Colors.grey[200],
         elevation: 0,
         leading: Builder(builder: (context) {
